@@ -14,6 +14,20 @@
     async function main() {
       let canv = document.getElementById("chess");
 
+      const pieces_names = new Map([
+      ["p", "pawn_black"], 
+      ["t", "knight_black"], 
+      ["b", "bishop_black"], 
+      ["r", "rook_black"], 
+      ["q", "queen_black"], 
+      ["k", "king_black"],
+      ["P", "pawn_white"], 
+      ["T", "knight_white"], 
+      ["B", "bishop_white"], 
+      ["R", "rook_white"], 
+      ["Q", "queen_white"], 
+      ["K", "king_white"]]);
+
       canv.height = ch;
       canv.width = cw;
 
@@ -75,7 +89,7 @@
             row = row + board[i][j] + " ";
             if (board[i][j] !== "."){
               let piece = new Image();
-              piece.src = "images/pieces/"+board[i][j]+".png";
+              piece.src = "images/pieces/"+pieces_names.get(board[i][j])+".png";
               piece.onload = function() {
                 m.drawImage(piece, j * tileSize , i * tileSize , tileSize, tileSize)
               };
